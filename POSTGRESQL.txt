@@ -1,0 +1,56 @@
+POSTGRESQL
+
+CREATE DATABASE honeyshop;
+\c honeyshop;
+
+CREATE TABLE klient (
+	id_klienta SERIAL PRIMARY KEY,
+	email VARCHAR(30) NOT NULL UNIQUE,
+	haslo VARCHAR(16) NOT NULL,
+	imie VARCHAR(20) NOT NULL,
+	nazwisko VARCHAR(20) NOT NULL,
+	adres_zamieszkania VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE produkt (
+	id_produktu SERIAL PRIMARY KEY,
+	nazwa VARCHAR(30) NOT NULL,
+	cena NUMERIC(7,5) NOT NULL,
+	ilosc INT NOT NULL
+);
+
+
+CREATE TABLE zamowienie (
+	id_zamowienia SERIAL PRIMARY KEY,
+	id_produktu INT,
+	id_klienta INT,
+	data_zamowienia DATE NOT NULL DEFAULT CURRENT_DATE,
+	ilosc_zamowionych_produktow INT NOT NULL,
+	czy_zrealizowano BOOLEAN NOT NULL DEFAULT FALSE,
+	FOREIGN KEY(id_produktu) REFERENCES produkt(id_produktu), 
+	FOREIGN KEY(id_klienta) REFERENCES klient(id_klienta)
+);
+
+
+CREATE TABLE zamowienie_produkt (
+	id_zamowienie_podukt SERIAL PRIMARY KEY,
+	id_produktu INT NOT NULL,
+	id_zamowienia INT NOT NULL,
+	FOREIGN KEY(id_produktu) REFERENCES produkt(id_produktu), 
+	FOREIGN KEY(id_zamowienia) REFERENCES zamowienie(id_zamowienia)
+);
+
+--TEST--
+
+INSERT INTO klient(email, haslo, imie, nazwisko, adres_zamieszkania) VALUES ('imie.nazwisko@email.com', 'haslo123',
+'imie', 'nazwisko', 'adres.zamieszkania 29');
+);
+
+INSERT INTO produkt(nazwa, cena, ilosc) VALUES ('miod', '2.99', 5);
+
+INSERT INTO zamowienie(id_produktu, id_klienta, ilosc_zamowionych_produktow) VALUES(1, 1, 2);
+
+-- data zapisywana yyyy-mm-dd a boolean jako 'f' --
+
+INSERT INTO zamowienie_produkt (id_produktu, id_zamowienia) VALUES (1, 1);
+ 
