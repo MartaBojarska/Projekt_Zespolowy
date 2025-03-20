@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoneyShop - Sklep z miodem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f4e1;
+            color: #3d3d3d;
+        }
+        header {
+            background-color: #ffcc00a8;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        header img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #2c2c2c;
+        }
+        .container {
+            padding: 20px;
+        }
+        .product {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .product h2 {
+            margin: 0;
+            color: #2c2c2c;
+        }
+        .product p {
+            margin: 5px 0;
+        }
+        .order-btn {
+            background-color: #ff9900;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+        }
+        .order-btn:hover {
+            background-color: #cc7700;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="HoneyShopLogo.png" alt="HoneyShop Logo">
+        <h1>HoneyShop - Naturalne Miody</h1>
+    </header>
+    <div class="container">
+        <div class="product">
+            <h2>Miód Lipowy</h2>
+            <p>Cena: 25.99 PLN</p>
+            <p>Dostępna ilość: 10 szt.</p>
+            <button class="order-btn">Zamów</button>
+        </div>
+        <div class="product">
+            <h2>Miód Akacjowy</h2>
+            <p>Cena: 29.99 PLN</p>
+            <p>Dostępna ilość: 8 szt.</p>
+            <button class="order-btn">Zamów</button>
+        </div>
+    </div>
+</body>
+</html>
