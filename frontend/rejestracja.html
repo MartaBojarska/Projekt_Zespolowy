@@ -4,61 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rejestracja - HoneyShop</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f4e1;
-            color: #3d3d3d;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .register-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            width: 300px;
-            text-align: center;
-        }
-        h2 {
-            margin-bottom: 20px;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .register-btn {
-            background-color: #ff9900;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            color: white;
-            width: 100%;
-            border-radius: 5px;
-        }
-        .register-btn:hover {
-            background-color: #cc7700;
-        }
-        .login-link {
-            display: block;
-            margin-top: 10px;
-            color: #0073e6;
-            text-decoration: none;
-        }
-        .login-link:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="auth-body">
     <div class="register-container">
         <h2>Zarejestruj się</h2>
         <form action="register.php" method="POST">
