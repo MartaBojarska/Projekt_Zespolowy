@@ -271,6 +271,41 @@ th {
     overflow-x: auto;
 }
 
+/* --- STYLE NAWIGACJI --- */
+header {
+    justify-content: space-between; /* Rozsuwa logo i menu na boki */
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #3d3d3d;
+    font-weight: bold;
+    margin-left: 20px;
+    font-size: 18px;
+    transition: color 0.2s;
+}
+
+.main-nav a:hover {
+    color: #e67e22;
+}
+
+/* W widoku mobilnym w style.css dopisz to pod header h1 { ... } */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .main-nav {
+        margin-top: 15px;
+    }
+    
+    .main-nav a {
+        margin: 0 10px;
+        display: inline-block;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .container, 
     .content-container {

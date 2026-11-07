@@ -8,22 +8,34 @@
 </head>
 <body>
     <header>
-        <img src="./images/HoneyShopLogo.png" alt="HoneyShop Logo">
-        <h1>HoneyShop - Naturalne Miody</h1>
+        <a href="Strona glowna.html" style="display: flex; align-items: center; text-decoration: none;">
+            <img src="./images/HoneyShopLogo.png" alt="HoneyShop Logo">
+            <h1 style="margin: 0; color: #2c2c2c;">HoneyShop - Naturalne Miody</h1>
+        </a>
+        <nav class="main-nav">
+            <a href="Strona glowna.html">Sklep</a>
+            <a href="Koszyk.html">Koszyk</a>
+            <a href="logowanie.html">Zaloguj się</a>
+        </nav>
     </header>
     <div class="content-container">
         <div class="product">
-            <h2>Miód Lipowy</h2>
+            <a href="produkt_miod100ml.html" style="text-decoration: none; color: inherit;">
+                <h2>Miód Lipowy</h2>
+            </a>
             <p>Cena: 25.99 PLN</p>
             <p>Dostępna ilość: 10 szt.</p>
-            <button class="order-btn">Zamów</button>
+            <button class="order-btn add-to-cart-btn" data-id="miod_lipowy">Zamów</button>
         </div>
         <div class="product">
-            <h2>Miód Akacjowy</h2>
+            <a href="produkt_miod40ml.html" style="text-decoration: none; color: inherit;">
+                <h2>Miód Akacjowy</h2>
+            </a>
             <p>Cena: 29.99 PLN</p>
             <p>Dostępna ilość: 8 szt.</p>
-            <button class="order-btn">Zamów</button>
+            <button class="order-btn add-to-cart-btn" data-id="miod_akacjowy">Zamów</button>
         </div>
     </div>
+    <script src="main.js"></script>
 </body>
 </html>
