@@ -3,6 +3,7 @@ from database import app, db, Product
 
 def seed_products():
     with app.app_context():
+        db.create_all()
         # Najpierw sprawdzamy, czy w bazie są już jakieś produkty. 
         # Jeśli tak, to nie dodajemy ich ponownie, by uniknąć duplikatów.
         if Product.query.first():

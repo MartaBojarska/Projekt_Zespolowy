@@ -32,6 +32,15 @@ class Product(db.Model):
     stock_quantity = db.Column(db.Integer, nullable=False)
     image_url = db.Column(db.String(255), nullable=False) # Ścieżka do zdjęcia
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "price": self.price,
+            "stock_quantity": self.stock_quantity,
+            "image_url": self.image_url
+        }
+
 class Order(db.Model):
     __tablename__ = 'order'
     id = db.Column(db.Integer, primary_key=True)
