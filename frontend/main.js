@@ -1,31 +1,50 @@
+// --- CZYSTE FUNKCJE (DO TESTOWANIA) ---
+
+// Sprawdza, czy pole nie jest puste
+function isNotEmpty(value) {
+    return value.trim() !== "";
+}
+
+// Sprawdza, czy hasła są identyczne
+function doPasswordsMatch(password, confirmPassword) {
+    return password === confirmPassword;
+}
+
+// Logika dodawania do koszyka (przyjmuje obecny koszyk i nowe ID)
+function addToCart(currentCart, productId) {
+    if (!productId) return currentCart;
+    const newCart = [...currentCart]; // Kopiujemy tablicę (dobra praktyka)
+    newCart.push(productId);
+    return newCart;
+}
+
+// Eksportujemy funkcje, jeśli środowisko to wspiera (przydatne do testów)
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { isNotEmpty, doPasswordsMatch, addToCart };
+}
+
+// --- LOGIKA APLIKACJI (POŁĄCZENIE Z DOM) ---
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Plik main.js został poprawnie załadowany i podpięty!");
 
+    // --- KOSZYK ---
     const cartButtons = document.querySelectorAll(".add-to-cart-btn");
-
     cartButtons.forEach(button => {
         button.addEventListener("click", (event) => {
-            
             const productId = event.target.getAttribute("data-id");
-
             if (productId) {
-                let cart = JSON.parse(localStorage.getItem("honeyShopCart")) || [];
-
-                cart.push(productId);
-
-                localStorage.setItem("honeyShopCart", JSON.stringify(cart));
-
+                let currentCart = JSON.parse(localStorage.getItem("honeyShopCart")) || [];
+                // Używamy naszej czystej funkcji!
+                let updatedCart = addToCart(currentCart, productId);
+                localStorage.setItem("honeyShopCart", JSON.stringify(updatedCart));
                 alert("Dodano do koszyka!");
             }
         });
     });
 
-    // --- FUNKCJE POMOCNICZE DO WALIDACJI ---
+    // --- FUNKCJE POMOCNICZE WIZUALNE ---
     function showError(input, message) {
-        // Podświetlenie błędnego pola na czerwono
         input.style.border = "2px solid red";
-        
-        // Tworzenie czerwonego komunikatu pod polem
         let errorMsg = input.nextElementSibling;
         if (!errorMsg || !errorMsg.classList.contains("error-msg")) {
             errorMsg = document.createElement("div");
@@ -41,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function clearErrors(form) {
-        // Czyszczenie starych błędów przed kolejną próbą wysyłki
         form.querySelectorAll("input").forEach(input => {
             input.style.border = "1px solid #ccc";
         });
@@ -58,18 +76,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const email = loginForm.querySelector("input[name='email']");
             const password = loginForm.querySelector("input[name='password']");
             
-            if (email.value.trim() === "") {
+            // Używamy naszej czystej funkcji!
+            if (!isNotEmpty(email.value)) {
                 showError(email, "E-mail nie może być pusty.");
                 isValid = false;
             }
-            if (password.value.trim() === "") {
+            if (!isNotEmpty(password.value)) {
                 showError(password, "Hasło nie może być puste.");
                 isValid = false;
             }
             
-            if (!isValid) {
-                event.preventDefault(); // Zatrzymuje wysyłanie formularza i przeładowanie strony
-            }
+            if (!isValid) event.preventDefault();
         });
     }
 
@@ -80,27 +97,24 @@ document.addEventListener("DOMContentLoaded", () => {
             clearErrors(registerForm);
             let isValid = true;
             
-            // 1. Sprawdzamy czy wszystkie pola są wypełnione
             const inputs = registerForm.querySelectorAll("input");
             inputs.forEach(input => {
-                if (input.value.trim() === "") {
+                if (!isNotEmpty(input.value)) {
                     showError(input, "To pole jest wymagane.");
                     isValid = false;
                 }
             });
             
-            // 2. Sprawdzamy czy hasła się zgadzają
             const password = document.getElementById("reg-password");
             const confirmPassword = document.getElementById("reg-confirm-password");
             
-            if (password.value !== confirmPassword.value && confirmPassword.value.trim() !== "") {
+            // Używamy naszych czystych funkcji!
+            if (isNotEmpty(confirmPassword.value) && !doPasswordsMatch(password.value, confirmPassword.value)) {
                 showError(confirmPassword, "Podane hasła nie są identyczne.");
                 isValid = false;
             }
             
-            if (!isValid) {
-                event.preventDefault(); // Zatrzymuje wysyłanie formularza
-            }
+            if (!isValid) event.preventDefault();
         });
     }
 });
