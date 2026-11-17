@@ -21,43 +21,35 @@
 
     <div class="content-container">
 
-        <div class="section">
-            <h2>Dane Klienta</h2>
-            <p><strong>Imię:</strong> Jan</p>
-            <p><strong>Nazwisko:</strong> Kowalski</p>
-            <p><strong>Email:</strong> jan.kowalski@email.com</p>
-            <p><strong>Adres:</strong> Ul. Miodowa 12, 00-001 Warszawa</p>
-        </div>
+            <div class="section">
+                <h2>Dane Klienta</h2>
+                <div id="profile-container">
+                    <p>Ładowanie danych profilu...</p>
+                </div>
+            </div>
 
-        <div class="section">
-            <h2>Historia Zamówień</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Data</th>
-                        <th>Produkty</th>
-                        <th>Suma</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>2025-03-20</td>
-                        <td>Miód Lipowy x2</td>
-                        <td>51.98 PLN</td>
-                        <td>Zrealizowane</td>
-                    </tr>
-                    <tr>
-                        <td>2025-03-15</td>
-                        <td>Miód Akacjowy x1</td>
-                        <td>29.99 PLN</td>
-                        <td>W realizacji</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+            <div class="section">
+                <h2>Historia Zamówień</h2>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Produkty</th>
+                                <th>Suma</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-list">
+                            <tr>
+                                <td colspan="4">Ładowanie historii zamówień...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-    </div>
-    <script src="main.js"></script>
-</body>
+        </div>
+        <script src="main.js"></script>
+    </body>
 </html>
